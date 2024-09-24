@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Material Design Icons (MDI) -->
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+
+    <!-- Font Awesome (FA) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Mobile navbar styles */
+        .overlay {
+            display: none;
+        }
+        .burger-menu {
+            display: none;
+        }
+        /* Mobile Navbar ends */
+        
+        @media (max-width: 768px) {
+            .overlay {
+                height: 100vh;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.3);
+                display: flex;
+                position: absolute;
+                z-index: 15;
+                visibility: hidden;
+                animation: fadeOut .3s ease-in-out;
+            }
+            .overlay.active {
+                display: flex;
+                animation: fade .3s ease-in-out;
+                visibility: visible;
+            }
+            .burger-menu {
+                width: 50%;
+                height: 100vh;
+                position: fixed;
+                background-color: whitesmoke;
+                right: 0;
+                transform: translateX(100%);
+                display: block;
+                transition: .5s ease-in-out;
+                z-index: 20;
+            }
+            .burger-menu.active {
+                animation: burgerMenu .5s ease-in-out;
+                transform: translateX(0);
+            }
+        }
+
+        /* Hero carousel styles */
+        .carousel {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .carousel img.active {
+            opacity: 1;
+        }
+        .carousel-caption {
+            position: absolute;
+            bottom: 50%;
+            left: 15%;
+            transform: translateY(10px);
+            color: white;
+            text-align: justify;
+            opacity: 0; /* Start hidden for animation */
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+        .carousel-caption.active {
+            opacity: 1; /* Fade in */
+            transform: translateY(0); /* Move into position */
+        }
+
+    </style>
+</head>
+<body class="flex justify-center items-center relative">
+    <div class="overlay"></div>
+    <div class="burger-menu">
+        <i class="fa-solid fa-xmark absolute right-0 p-3 text-2xl"></i>
+        <div class="flex flex-col justify-center items-center gap-y-5 px-5 py-10 text-lg font-semibold">
+            <a href="" class="hover:text-yellow-300 duration-300">Home</a>
+            <a href="" class="hover:text-yellow-300 duration-300">About</a>
+            <a href="" class="hover:text-yellow-300 duration-300">Service</a>
+            <a href="" class="hover:text-yellow-300 duration-300">Gallery</a>
+            <a href="" class="hover:text-yellow-300 duration-300">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section starts -->
+    <section class="h-screen w-screen font-semibold text-white">
+        <!-- Navbar starts -->
+        <div class="z-10 absolute w-screen">
+            <nav class="hidden md:flex text-2xl justify-around py-10">
+                <a href="#"><h1>GNS</h1></a>
+                <div class="hidden md:flex justify-between gap-x-10">
+                    <a href="" class="hover:text-yellow-300 duration-300">Home</a>
+                    <a href="" class="hover:text-yellow-300 duration-300">About</a>
+                    <a href="" class="hover:text-yellow-300 duration-300">Service</a>
+                    <a href="" class="hover:text-yellow-300 duration-300">Gallery</a>
+                    <a href="" class="hover:text-yellow-300 duration-300">Contact</a>
+                </div>
+            </nav>
+            <nav class="flex md:hidden text-2xl justify-between p-10">
+                <a href="#"><h1>GNS</h1></a>
+                <div class="block md:hidden">
+                    <i class="fa-solid fa-bars" id="menu-toggle"></i>
+                </div>
+            </nav>
+        </div>
+        <!-- Navbar ends -->
+
+        <!-- Hero Carousel Section starts --> 
+        <div class="carousel">
+            <img class="active" src="https://picsum.photos/1920/1080?random=1" alt="Image 1" />
+            <img src="https://picsum.photos/1920/1080?random=2" alt="Image 2" />
+            <img src="https://picsum.photos/1920/1080?random=3" alt="Image 3" />
+
+            <div class="carousel-caption active">
+                <div class="title text-5xl">Title 1</div>
+                <div class="caption text-lg mt-5">Caption for Image 1</div>
+            </div>
+        </div>
+        <!-- Hero Carousel Section ends --> 
+    </section>
+    <!-- Hero Section Ends -->
+
+    <script>
+        const images = document.querySelectorAll('.carousel img');
+        const titles = ['Title 1', 'Title 2', 'Title 3'];
+        const captions = [
+            'Caption for Image 1',
+            'Caption for Image 2',
+            'Caption for Image 3'
+        ];
+        let currentIndex = 0;
+
+        function changeSlide() {
+            // Hide current image and captions
+            images[currentIndex].classList.remove('active');
+
+            // Update index
+            currentIndex = (currentIndex + 1) % images.length;
+
+            // Show next image and captions
+            images[currentIndex].classList.add('active');
+
+
+        }
+
+        setInterval(changeSlide, 5000); // Change slide every 5 seconds
+
+        // Menu toggle script
+        const burgerMenu = document.querySelector('.burger-menu');
+        const overlay = document.querySelector('.overlay');
+        const menuToggle = document.getElementById('menu-toggle');
+
+        menuToggle.addEventListener('click', () => {
+            overlay.classList.toggle('active');
+            burgerMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!burgerMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                burgerMenu.classList.remove('active');
+                overlay.classList.remove('active');
+            }
+        });
+
+        const closeButton = document.querySelector('.fa-xmark');
+        closeButton.addEventListener('click', () => {
+            burgerMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
