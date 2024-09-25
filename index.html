@@ -76,17 +76,54 @@
         }
         .carousel-caption {
             position: absolute;
-            bottom: 50%;
+            bottom: 30%;
             left: 15%;
             transform: translateY(10px);
             color: white;
             text-align: justify;
-            opacity: 0; /* Start hidden for animation */
-            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            animation: captionHide 1.5s ease-in-out;
+            display: none;
         }
         .carousel-caption.active {
             opacity: 1; /* Fade in */
             transform: translateY(0); /* Move into position */
+            animation: captionShow 1.5s ease-in-out;
+            display: block;
+            
+        }
+        .overlay-img{
+            position: absolute;
+            height: 100vh;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        .title{
+            font-size: 96px;
+        }
+        .caption{
+            font-size: 32px;
+        }
+        @keyframes captionShow {
+            0%{
+                transform: translateY(10px);
+                opacity: 0;
+            }
+            100%{
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes captionHide {
+            0%{
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100%{
+                transform: translateY(10px);
+                opacity: 0;
+                display: none;
+            }
         }
 
     </style>
@@ -129,13 +166,24 @@
 
         <!-- Hero Carousel Section starts --> 
         <div class="carousel">
+            <div class="overlay-img"></div>
             <img class="active" src="https://picsum.photos/1920/1080?random=1" alt="Image 1" />
             <img src="https://picsum.photos/1920/1080?random=2" alt="Image 2" />
             <img src="https://picsum.photos/1920/1080?random=3" alt="Image 3" />
 
-            <div class="carousel-caption active">
-                <div class="title text-5xl">Title 1</div>
-                <div class="caption text-lg mt-5">Caption for Image 1</div>
+            <div class="carousel-caption active" style="z-index: 5;">
+                <div class="title">Title 1</div>
+                <div class="caption  ">Caption for Image 1</div>
+            </div>
+            
+            <div class="carousel-caption " style="z-index: 5;">
+                <div class="title">Title 2</div>
+                <div class="caption  ">Caption for Image 2</div>
+            </div>
+            
+            <div class="carousel-caption " style="z-index: 5;">
+                <h1 class="title">Title 3</h1>
+                <h1 class="caption ">Caption for Image 3</h1>
             </div>
         </div>
         <!-- Hero Carousel Section ends --> 
@@ -144,51 +192,47 @@
 
     <script>
         const images = document.querySelectorAll('.carousel img');
-        const titles = ['Title 1', 'Title 2', 'Title 3'];
-        const captions = [
-            'Caption for Image 1',
-            'Caption for Image 2',
-            'Caption for Image 3'
-        ];
+        const captions = document.querySelectorAll('.carousel-caption');
         let currentIndex = 0;
-
+    
         function changeSlide() {
             // Hide current image and captions
             images[currentIndex].classList.remove('active');
-
+            captions[currentIndex].classList.remove('active');
+    
             // Update index
             currentIndex = (currentIndex + 1) % images.length;
-
+    
             // Show next image and captions
             images[currentIndex].classList.add('active');
-
-
+            captions[currentIndex].classList.add('active');
         }
-
+    
         setInterval(changeSlide, 5000); // Change slide every 5 seconds
-
+    
         // Menu toggle script
         const burgerMenu = document.querySelector('.burger-menu');
         const overlay = document.querySelector('.overlay');
         const menuToggle = document.getElementById('menu-toggle');
-
+    
         menuToggle.addEventListener('click', () => {
             overlay.classList.toggle('active');
             burgerMenu.classList.toggle('active');
         });
-
+    
         document.addEventListener('click', (event) => {
             if (!burgerMenu.contains(event.target) && !menuToggle.contains(event.target)) {
                 burgerMenu.classList.remove('active');
                 overlay.classList.remove('active');
             }
         });
-
+    
         const closeButton = document.querySelector('.fa-xmark');
         closeButton.addEventListener('click', () => {
             burgerMenu.classList.remove('active');
             overlay.classList.remove('active');
         });
     </script>
+    
 </body>
 </html>
