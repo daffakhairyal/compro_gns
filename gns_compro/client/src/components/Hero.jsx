@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { GiEcology } from 'react-icons/gi';
+import { GiEcology, GiHamburgerMenu } from 'react-icons/gi';
 
 const images = [
   "https://picsum.photos/1920/1080?random=1",
@@ -22,7 +22,7 @@ const Hero = () => {
   return (
     <section className='relative h-screen w-full overflow-hidden'>
       {/* Navbar Hero starts */}
-      <div className='absolute top-0 right-0 left-0 justify-center items-center flex gap-x-6 z-20 bg-black text-white p-5'>
+      <div className='hidden  justify-center items-center md:flex gap-x-6 z-20 bg-black text-white p-5'>
         <a href="" className='px-5 duration-500 hover:scale-125'>ABOUT</a>
         <a href="" className='px-5 duration-500 hover:scale-125'>SERVICE</a>
         <a href="#" className='flex items-center duration-500 hover:scale-125'><GiEcology className='text-3xl mx-2 text-yellow-700' /><p className='text-xl font-semibold'>GNS</p></a>
@@ -30,6 +30,12 @@ const Hero = () => {
         <a href="" className='px-5 duration-500 hover:scale-125'>CONTACT</a>
       </div>
       {/* Navbar Hero ends */}
+            {/* Navbar Hero Mobile starts */}
+            <div className='md:hidden justify-between items-center flex gap-x-6 z-20 bg-black text-white py-5 px-8'>
+        <a href="#" className='flex items-center duration-500 hover:scale-125'><GiEcology className='text-3xl mx-2 text-yellow-700' /><p className='text-xl font-semibold'>GNS</p></a>
+        <button className='flex sm:hidden text-2xl' ><GiHamburgerMenu /></button>
+      </div>
+      {/* Navbar Hero Mobile ends */}
 
       {/* Image Section starts */}
       {images.map((image, index) => (
