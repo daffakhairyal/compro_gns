@@ -1,0 +1,36 @@
+.navbar{
+    transform: translateY(-200%);
+    transition: .5s ease-in-out;
+}
+.navbar.active{
+    transform: translateY(0);
+    animation: slidedown .5s ease-in-out;
+    transition: .5s ease-in-out;
+}
+.nav-mobile{
+    transform: translateX(200%);
+    transition: .3s ease-in-out;
+}
+.nav-mobile.active{
+    transform: translateX(0);
+    animation: slideleft .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+@keyframes slidedown {
+    0%{
+        transform: translateY(-200%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+    
+}
+@keyframes slideleft {
+    0%{
+        transform: translateX(200%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+    
+}
