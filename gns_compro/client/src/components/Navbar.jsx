@@ -5,6 +5,7 @@ import { IoLogoWhatsapp } from "react-icons/io";
 import { GiEcology } from "react-icons/gi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaChevronDown } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa6";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -106,6 +107,13 @@ const Navbar = () => {
             <a href="" className='hover:text-yellow-500 duration-300'><IoLogoWhatsapp /></a>
           </div>
         </div>
+      </div>
+
+      {/* Whatsapp Float Button */}
+      <div className='fixed bottom-10 right-10 z-40 p-3 shadow-md shadow-black/50 rounded-full bg-green-500 text-white text-5xl font-bold'>
+        <a href="">
+        <FaWhatsapp/>
+        </a>
       </div>
     </div>
   );

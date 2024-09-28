@@ -7,7 +7,7 @@ const About = () => {
   return (
     <section className='flex flex-col'>
       {/* Header About starts */}
-      <div className='gap-y-5 md:px-10 py-10 flex flex-col md:flex-row justify-around'>
+      <div className='gap-y-5 md:px-10 py-10 flex flex-col md:flex-row justify-around bg-black text-white'>
         <div className='gap-y-6 flex flex-col items-center md:w-[300px] p-3 '>
           <div className='p-6 text-4xl bg-green-500  text-white rounded-full duration-500 hover:scale-110'>
             <FaLeaf />
@@ -50,7 +50,7 @@ const About = () => {
         <div  className='relative p-10 h-[200px] flex items-center justify-center bg-cover bg-center' 
              style={{ backgroundImage: 'url(https://picsum.photos/1920/1080?random=5)' }}>
           {/* Overlay */}
-          <div className='absolute inset-0 bg-blue-500 opacity-50'></div>
+          <div className='absolute inset-0 bg-black opacity-50'></div>
           {/* Text content */}
           <h1 className='relative text-[75px] font-bold text-white'>
             About Us
@@ -83,24 +83,7 @@ const About = () => {
     </p>
   </div>
 
-  <h2 className='text-5xl font-bold text-center my-8 '>Our Clients</h2>
-  <div className='flex flex-wrap justify-center gap-6'>
-    <div className='w-32 h-32 flex items-center justify-center'>
-      <img src='https://via.placeholder.com/150' alt='Client A' className='h-full w-full object-contain' />
-    </div>
-    <div className='w-32 h-32 flex items-center justify-center'>
-      <img src='https://via.placeholder.com/150' alt='Client B' className='h-full w-full object-contain' />
-    </div>
-    <div className='w-32 h-32 flex items-center justify-center'>
-      <img src='https://via.placeholder.com/150' alt='Client C' className='h-full w-full object-contain' />
-    </div>
-    <div className='w-32 h-32 flex items-center justify-center'>
-      <img src='https://via.placeholder.com/150' alt='Client D' className='h-full w-full object-contain' />
-    </div>
-    <div className='w-32 h-32 flex items-center justify-center'>
-      <img src='https://via.placeholder.com/150' alt='Client E' className='h-full w-full object-contain' />
-    </div>
-  </div>
+
 </div>
 
 
