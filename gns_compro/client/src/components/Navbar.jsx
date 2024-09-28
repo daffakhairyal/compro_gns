@@ -14,7 +14,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollThreshold = 10;
+      const scrollThreshold = 35;
 
       if (window.scrollY > scrollThreshold) {
         setIsActive(true);
@@ -85,10 +85,10 @@ const Navbar = () => {
       </nav>
 
       {/* Overlay */}
-      <div className={`fixed h-screen w-full bg-black opacity-50 z-10 ${isMenuOpen ? 'block' : 'hidden'}`} onClick={closeMenu}></div>
+      <div className={`fixed h-screen w-full bg-black opacity-50 z-30 ${isMenuOpen ? 'block' : 'hidden'}`} onClick={closeMenu}></div>
 
       {/* Mobile Menu */}
-      <div className={`fixed flex flex-col items-center py-6 gap-y-6 w-1/2 shadow-lg shadow-black top-0 right-0 h-screen bg-slate-100 z-20 nav-mobile ${isMenuOpen ? 'active' : ''}`}>
+      <div className={`fixed flex flex-col items-center py-6 gap-y-6 w-1/2 shadow-lg shadow-black top-0 right-0 h-screen bg-slate-100 z-40 nav-mobile ${isMenuOpen ? 'active' : ''}`}>
         <a href=""><p>HOME</p></a>
         <a href=""><p>ABOUT</p></a>
         <a href=""><p>SERVICE</p></a>
