@@ -51,7 +51,7 @@ const Hero = () => {
         <h1 className='text-slate-200 text-3xl md:text-6xl font-bold'>We’re Eco-Friendly Waste Management</h1> 
         <h1 className='text-slate-200'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint voluptatibus ab natus nobis 
           dolore ex tempore facere debitis in! Fuga?</h1> 
-          <button className='rounded-xl shadow shadow-black/25 bg-yellow-500 duration-500 hover:bg-black hover:text-white py-3 px-5 text-lg font-semibold'>Getting Started</button>
+          <a href='#about' className='rounded-xl shadow shadow-black/25 bg-yellow-500 duration-500 hover:bg-black hover:text-white py-3 px-5 text-lg font-semibold'>Getting Started</a>
       </div>
       {/* Hero Section ends */}
     </section>
