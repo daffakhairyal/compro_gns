@@ -12,10 +12,6 @@ const App = () => {
     <div className='relative'>
       <Navbar/>
       <Hero/>
-      <About/>
-      <Service/>
-      <Project/>
-      <Contact/>
       <Footer/>
     </div>
   )
